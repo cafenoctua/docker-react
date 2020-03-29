@@ -1,0 +1,9 @@
+sudo: required
+services:
+    - docker
+
+before_install:
+    - docker build -t bru/docker-react -f Dockerfile.dev .
+
+script:
+    - docker run -e CI=true bru/docker-react npm run test
